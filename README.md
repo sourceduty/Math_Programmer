@@ -11,7 +11,7 @@ In addition to providing solutions, Math Programmer emphasizes clarity in both t
 #
 ### Notes
 
-<details><summary>High-Level Simulation Model of Arduino UNO Using Python</summary>
+<details><summary>High-Level Simulated Math Model of Arduino UNO</summary>
 <br>
 
 The provided Python implementation models an Arduino UNO by simulating its key features, including its microcontroller, I/O pins, timers, and communication interfaces. The model is encapsulated within the ArduinoUNO class, which manages various components such as digital and analog pins, memory, and timers. The class includes methods to simulate fundamental Arduino functions like pinMode, digitalWrite, digitalRead, analogWrite, and analogRead. These methods mimic the behavior of the actual Arduino hardware, allowing users to set and read the states of pins, simulate analog input and output, and configure pin modes.
@@ -143,6 +143,109 @@ print(f"Analog Pin A0 value: {arduino.analogRead(0)}")
 arduino.analogWrite(6, 128)
 print(f"PWM Pin 6 value: {arduino.pwm_pins[2]}")
 ```
+
+Arduino UNO Simulation as a Mathematical Model
+
+This mathematical model represents the key functionalities of an Arduino UNO microcontroller by abstracting its hardware operations into mathematical equations and functions. The model covers the behavior of the microcontroller's clock speed, digital and analog pin states, PWM (Pulse Width Modulation) outputs, memory operations, timers, and communication protocols like UART, SPI, and I2C. Each of these components is modeled to reflect how they would behave in response to various inputs and over time. This model serves as a theoretical framework to understand and predict the microcontroller's performance in different scenarios, providing a simplified yet accurate representation of the Arduino UNO's functionality.
+
+```
+1. Clock Speed and Timing
+
+   Clock Cycles (C): The Arduino UNO has a clock speed of 16 MHz, meaning it executes 16 million cycles per second.
+   
+   C(t) = 16 × 10^6 × t
+   
+   where t is time in seconds.
+
+2. Digital Pin State
+
+   Digital Pin State (D(p)): Each digital pin can either be HIGH (1) or LOW (0). Let D(p, t) represent the state of pin p at time t.
+   
+   D(p, t) ∈ {0, 1}
+   
+   A function can be used to change the state based on a control input:
+   
+   D(p, t + Δt) = ControlInput(p, t)
+
+3. Analog Pin Reading
+
+   Analog Input (A(p)): Analog pins read a voltage level and convert it to a digital value between 0 and 1023.
+   
+   A(p, t) = ⌊ V(p, t) / V_ref × 1023 ⌋
+   
+   where V(p, t) is the voltage at pin p at time t, and V_ref is the reference voltage (typically 5V).
+
+4. Pulse Width Modulation (PWM)
+
+   PWM Output (P(p, t)): PWM simulates analog output using digital signals. The duty cycle determines the average voltage.
+   
+   P(p, t) = V_out × d(p, t) / 255
+   
+   where d(p, t) is the PWM duty cycle value (0-255), and V_out is the output voltage (typically 5V).
+
+5. Memory Operations
+
+   Flash, SRAM, EEPROM (M(m, t)): Memory contents change over time based on program execution.
+   
+   M(m, t + Δt) = f(M(m, t), ProgramInstructions)
+   
+   where M(m, t) represents the state of memory m at time t, and f is a function representing the effect of executing program instructions.
+
+6. Timers
+
+   Timer (T(n, t)): The timers count clock cycles and can trigger actions after specific intervals.
+   
+   T(n, t) = C(t) mod TimerInterval(n)
+   
+   where T(n, t) is the value of timer n at time t.
+
+7. UART, SPI, I2C Communication
+
+   Data Transfer: These peripherals can be represented by functions that model the data flow between components.
+   
+   UART: U(t) = TransmitData
+   SPI: S(t) = SPITransferData
+   I2C: I(t) = I2CTransferData
+
+Mathematical Model Overview
+
+1. Clock Cycles:
+   C(t) = 16 × 10^6 × t
+
+2. Digital Pin State:
+   D(p, t + Δt) = ControlInput(p, t)
+
+3. Analog Pin Reading:
+   A(p, t) = ⌊ V(p, t) / V_ref × 1023 ⌋
+
+4. PWM Output:
+   P(p, t) = V_out × d(p, t) / 255
+
+5. Memory State:
+   M(m, t + Δt) = f(M(m, t), ProgramInstructions)
+
+6. Timer:
+   T(n, t) = C(t) mod TimerInterval(n)
+
+7. Communication Data Transfer:
+   U(t), S(t), I(t) modeled by data transfer functions
+
+Example Application
+
+If a digital pin is set high after a delay:
+
+1. Set Pin Mode:
+   ControlInput(13, t) sets D(13, t) = 1
+
+2. Delay:
+   DelayTime = 1000 ms
+   t_new = t + (DelayTime / 1000)
+
+3. Read Pin:
+   D(13, t_new)
+```
+
+This abstraction can be expanded further to fully represent the system behavior mathematically. However, it's important to note that this abstraction is simplified and would require more detailed equations and conditions to fully replicate the Arduino UNO's hardware functionality.
 
 <br>
 </details>
