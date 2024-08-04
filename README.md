@@ -24,6 +24,8 @@ The run_program method is a feature that allows users to simulate running a simp
 
 Overall, this implementation provides a foundation for simulating an Arduino UNO, capturing its key functionalities in a Python environment. The model is designed to be modular, with the potential for expanding features like more detailed communication protocols, enhanced timer functionalities, and external interrupts. This simulation can be useful for testing and validating Arduino code in a controlled environment before deploying it to actual hardware. Additionally, the code can be extended with a graphical user interface or additional features based on specific project needs.
 
+<br>
+
 ```
 import time
 import threading
@@ -144,9 +146,13 @@ arduino.analogWrite(6, 128)
 print(f"PWM Pin 6 value: {arduino.pwm_pins[2]}")
 ```
 
+<br>
+
 Arduino UNO Simulation as a Mathematical Model
 
 This mathematical model represents the key functionalities of an Arduino UNO microcontroller by abstracting its hardware operations into mathematical equations and functions. The model covers the behavior of the microcontroller's clock speed, digital and analog pin states, PWM (Pulse Width Modulation) outputs, memory operations, timers, and communication protocols like UART, SPI, and I2C. Each of these components is modeled to reflect how they would behave in response to various inputs and over time. This model serves as a theoretical framework to understand and predict the microcontroller's performance in different scenarios, providing a simplified yet accurate representation of the Arduino UNO's functionality.
+
+<br>
 
 ```
 1. Clock Speed and Timing
@@ -283,6 +289,8 @@ Battery Life = 2400 mAh / 100 mA = 24 hours
 #### Implementation in Python
 
 This program takes the battery capacity and the device's current draw as inputs and calculates the estimated battery life in hours. You can modify the capacity and current_draw variables to match your specific requirements. The program also includes basic error handling for invalid inputs.
+
+<br>
 
 ```
 def calculate_battery_life(capacity_mAh, current_draw_mA):
