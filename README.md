@@ -11,7 +11,7 @@ In addition to providing solutions, Math Programmer emphasizes clarity in both t
 #
 ### Notes
 
-<details><summary>High-Level Math Model of Arduino UNO Using Python</summary>
+<details><summary>High-Level Simulation Model of Arduino UNO Using Python</summary>
 <br>
 
 The provided Python implementation models an Arduino UNO by simulating its key features, including its microcontroller, I/O pins, timers, and communication interfaces. The model is encapsulated within the ArduinoUNO class, which manages various components such as digital and analog pins, memory, and timers. The class includes methods to simulate fundamental Arduino functions like pinMode, digitalWrite, digitalRead, analogWrite, and analogRead. These methods mimic the behavior of the actual Arduino hardware, allowing users to set and read the states of pins, simulate analog input and output, and configure pin modes.
