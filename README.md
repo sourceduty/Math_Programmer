@@ -328,6 +328,8 @@ print(f"Estimated Battery Life: {battery_life} hours")
 [ChatGPT](https://github.com/sourceduty/ChatGPT)
 <br>
 [Math Simulator](https://github.com/sourceduty/Math_Simulator)
+<br>
+[Spatial Footprint](https://chat.openai.com/g/g-lonVHkdtM-spatial-footprint)
 
 ***
 Copyright (C) 2024, Sourceduty - All Rights Reserved.
