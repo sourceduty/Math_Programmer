@@ -250,6 +250,70 @@ This abstraction can be expanded further to fully represent the system behavior 
 <br>
 </details>
 
+<details><summary>AA Battery Life Estimation</summary>
+<br>
+
+This program aims to estimate how long an AA battery will last when powering a device. By knowing the battery's capacity in milliamp-hours (mAh) and the device's current draw in milliamps (mA), you can easily calculate the battery life using a simple formula.
+
+Problem Statement:
+
+You want to estimate how long an AA battery will last when powering a device. You know the battery's capacity in milliamp-hours (mAh) and the device's current draw in milliamps (mA).
+
+Assumptions:
+
+- The battery discharges at a constant rate.
+- The capacity of the battery is given in milliamp-hours (mAh).
+- The current draw of the device is constant and given in milliamps (mA).
+
+Formula:
+
+The battery life in hours can be calculated using the formula:
+
+Battery Life (hours) = Battery Capacity (mAh) / Device Current Draw (mA)
+
+Example Input:
+
+Battery Capacity: 2400 mAh (typical for AA alkaline batteries)
+Device Current Draw: 100 mA
+
+Example Calculation:
+
+Battery Life = 2400 mAh / 100 mA = 24 hours
+
+#### Implementation in Python
+
+This program takes the battery capacity and the device's current draw as inputs and calculates the estimated battery life in hours. You can modify the capacity and current_draw variables to match your specific requirements. The program also includes basic error handling for invalid inputs.
+
+```
+def calculate_battery_life(capacity_mAh, current_draw_mA):
+    """
+    Calculate the battery life in hours based on battery capacity and device current draw.
+    
+    Parameters:
+    capacity_mAh (float): The capacity of the battery in milliamp-hours (mAh).
+    current_draw_mA (float): The current draw of the device in milliamps (mA).
+    
+    Returns:
+    float: Estimated battery life in hours.
+    """
+    if current_draw_mA <= 0:
+        raise ValueError("Current draw must be a positive value.")
+    if capacity_mAh <= 0:
+        raise ValueError("Battery capacity must be a positive value.")
+        
+    battery_life_hours = capacity_mAh / current_draw_mA
+    return battery_life_hours
+
+# Example usage:
+capacity = 2400  # mAh
+current_draw = 100  # mA
+battery_life = calculate_battery_life(capacity, current_draw)
+print(f"Estimated Battery Life: {battery_life} hours")
+```
+
+<br>
+</details>
+
 #
 ### Related Links
 
