@@ -330,6 +330,8 @@ print(f"Estimated Battery Life: {battery_life} hours")
 [Math Simulator](https://github.com/sourceduty/Math_Simulator)
 <br>
 [Spatial Footprint](https://chat.openai.com/g/g-lonVHkdtM-spatial-footprint)
+<br>
+[Math](https://github.com/sourceduty/Math)
 
 ***
 Copyright (C) 2024, Sourceduty - All Rights Reserved.
