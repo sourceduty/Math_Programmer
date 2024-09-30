@@ -1,0 +1,95 @@
+# Steps:
+# 1. Input data: For each metric, you provide the necessary data.
+# 2. Metric Calculations: The script calculates each metric based on the formulas.
+# 3. IV Calculation: After calculating the individual scores, the script will compute the overall IV using user-defined weights.
+# 4. Output: The final results, including the individual metrics and the overall IV, are displayed.
+
+# Define the function to calculate metrics
+def calculate_usability_metrics(successful_tasks, total_tasks, total_errors, error_opportunities, total_time, num_users):
+    task_completion_rate = (successful_tasks / total_tasks) * 100
+    error_rate = total_errors / error_opportunities
+    time_on_task = total_time / num_users
+    return task_completion_rate, error_rate, time_on_task
+
+def calculate_efficiency_metrics(old_time, new_time, old_cost, new_cost, output_before, output_after):
+    time_savings = ((old_time - new_time) / old_time) * 100
+    cost_reduction = ((old_cost - new_cost) / old_cost) * 100
+    productivity_gains = ((output_after - output_before) / output_before) * 100
+    return time_savings, cost_reduction, productivity_gains
+
+def calculate_satisfaction_metrics(promoters, detractors, total_responses, satisfied_responses, customers_start, customers_end, new_customers):
+    nps = promoters - detractors
+    csat = (satisfied_responses / total_responses) * 100
+    retention_rate = ((customers_end - new_customers) / customers_start) * 100
+    return nps, csat, retention_rate
+
+def calculate_impact_metrics(revenue_before, revenue_after, total_sales, industry_sales, net_gain, improvement_cost):
+    revenue_growth = ((revenue_after - revenue_before) / revenue_before) * 100
+    market_share = (total_sales / industry_sales) * 100
+    roi = (net_gain / improvement_cost) * 100
+    return revenue_growth, market_share, roi
+
+# Define function to calculate the Overall Improvement Value (IV)
+def calculate_iv(usability_score, efficiency_score, satisfaction_score, impact_score, w_U, w_E, w_S, w_I):
+    iv = (w_U * usability_score) + (w_E * efficiency_score) + (w_S * satisfaction_score) + (w_I * impact_score)
+    return iv
+
+# Main function to automate the process
+def automate_improvement_value():
+    # Usability Metrics
+    successful_tasks = int(input("Enter number of successful tasks: "))
+    total_tasks = int(input("Enter total number of tasks attempted: "))
+    total_errors = int(input("Enter total number of errors made: "))
+    error_opportunities = int(input("Enter total opportunities for error: "))
+    total_time = float(input("Enter total time spent by all users (in hours): "))
+    num_users = int(input("Enter number of users: "))
+    
+    usability_metrics = calculate_usability_metrics(successful_tasks, total_tasks, total_errors, error_opportunities, total_time, num_users)
+    print(f"Usability Metrics: Task Completion Rate = {usability_metrics[0]:.2f}%, Error Rate = {usability_metrics[1]:.2f}, Time on Task = {usability_metrics[2]:.2f} hours/user")
+    
+    # Efficiency Metrics
+    old_time = float(input("Enter old process time (in hours): "))
+    new_time = float(input("Enter new process time (in hours): "))
+    old_cost = float(input("Enter old cost: "))
+    new_cost = float(input("Enter new cost: "))
+    output_before = int(input("Enter output before improvement: "))
+    output_after = int(input("Enter output after improvement: "))
+    
+    efficiency_metrics = calculate_efficiency_metrics(old_time, new_time, old_cost, new_cost, output_before, output_after)
+    print(f"Efficiency Metrics: Time Savings = {efficiency_metrics[0]:.2f}%, Cost Reduction = {efficiency_metrics[1]:.2f}%, Productivity Gains = {efficiency_metrics[2]:.2f}%")
+    
+    # Satisfaction Metrics
+    promoters = int(input("Enter percentage of promoters: "))
+    detractors = int(input("Enter percentage of detractors: "))
+    total_responses = int(input("Enter total number of responses: "))
+    satisfied_responses = int(input("Enter number of satisfied responses: "))
+    customers_start = int(input("Enter number of customers at start of period: "))
+    customers_end = int(input("Enter number of customers at end of period: "))
+    new_customers = int(input("Enter number of new customers: "))
+    
+    satisfaction_metrics = calculate_satisfaction_metrics(promoters, detractors, total_responses, satisfied_responses, customers_start, customers_end, new_customers)
+    print(f"Satisfaction Metrics: NPS = {satisfaction_metrics[0]:.2f}, CSAT = {satisfaction_metrics[1]:.2f}%, Customer Retention Rate = {satisfaction_metrics[2]:.2f}%")
+    
+    # Impact Metrics
+    revenue_before = float(input("Enter revenue before improvement: "))
+    revenue_after = float(input("Enter revenue after improvement: "))
+    total_sales = float(input("Enter your total sales: "))
+    industry_sales = float(input("Enter total industry sales: "))
+    net_gain = float(input("Enter net gain from improvements: "))
+    improvement_cost = float(input("Enter total improvement cost: "))
+    
+    impact_metrics = calculate_impact_metrics(revenue_before, revenue_after, total_sales, industry_sales, net_gain, improvement_cost)
+    print(f"Impact Metrics: Revenue Growth = {impact_metrics[0]:.2f}%, Market Share = {impact_metrics[1]:.2f}%, ROI = {impact_metrics[2]:.2f}%")
+    
+    # Get weights for IV calculation
+    w_U = float(input("Enter weight for Usability (0-1): "))
+    w_E = float(input("Enter weight for Efficiency (0-1): "))
+    w_S = float(input("Enter weight for Satisfaction (0-1): "))
+    w_I = float(input("Enter weight for Impact (0-1): "))
+    
+    # Calculate the overall IV
+    iv_score = calculate_iv(usability_metrics[0], efficiency_metrics[0], satisfaction_metrics[0], impact_metrics[0], w_U, w_E, w_S, w_I)
+    print(f"\nOverall Improvement Value (IV) = {iv_score:.2f}")
+
+# Run the automation
+automate_improvement_value()
