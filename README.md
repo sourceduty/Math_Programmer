@@ -347,6 +347,8 @@ In customer service automation, the IV framework can be employed to monitor the 
 [Improvement Value](https://github.com/sourceduty/Improvement_Value)
 <br>
 [Geometry Simulator](https://github.com/sourceduty/Geometry_Simulator)
+<br>
+[Algorithms](https://github.com/sourceduty/Algorithms)
 
 ***
 Copyright (C) 2024, Sourceduty - All Rights Reserved.
